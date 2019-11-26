@@ -490,7 +490,6 @@ There are several variables defined in UCL configuration parser and they are als
 
 Unlike SpamAssassin, Rspamd **suggests** the desired action for a specific message scanned. This could be treated as a recommendation to MTA what it should do with this message. Here is a list of possible choices that are sent by Rspamd:
 
-- `discard`: drop an email but return success for sender (should be used merely in special cases)
 - `reject`: ultimately reject message
 - `rewrite subject`: rewrite subject to indicate spam
 - `add header`: add specific header to indicate spam
@@ -500,7 +499,9 @@ Unlike SpamAssassin, Rspamd **suggests** the desired action for a specific messa
 From version 1.9, there are also some more actions:
 
 - `quarantine`: push a message to quarantine (must be supported by MTA)
-- `discard`: silently discard a message
+- `discard`: silently discard a message (should be used merely in special cases)
+
+If you want to use `quarantine` or `discard` you have to define them first as shown below.
 
 From version 1.9, you can also define any action you'd like with it's own threshold or use that in `force_actions` module:
 
